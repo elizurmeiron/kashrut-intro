@@ -1,0 +1,256 @@
+/* ========================================
+   CSS Variables - Theme & Color System
+   ערכת ברירת מחדל: "warm" — טרקוטה, זהב חם וזית (תחושת מטבח חם ומסורת)
+   ======================================== */
+
+.rtl-mode {
+    --nav-prev-side: right;
+    --nav-next-side: left;
+    --arrow-prev: '►';
+    --arrow-next: '◄';
+    --text-direction: rtl;
+}
+
+/* ========================================
+   Color Themes
+   ======================================== */
+
+/* Warm theme (Default) — טרקוטה, זהב חם וזית */
+:root,
+[data-theme="warm"] {
+    --theme-primary: #B65929;       /* טרקוטה */
+    --theme-primary-dark: #8E4520;
+    --theme-secondary: #D89B2F;     /* זהב חם */
+    --theme-tertiary: #6B7B3D;      /* זית — לדגשים, עומק */
+}
+
+/* Blue theme (Legacy) */
+[data-theme="blue"] {
+    --theme-primary: #667eea;
+    --theme-primary-dark: #5a6fd8;
+    --theme-secondary: #764ba2;
+    --theme-tertiary: #4299e1;
+}
+
+[data-theme="gray"] {
+    --theme-primary: #718096;
+    --theme-primary-dark: #4a5568;
+    --theme-secondary: #2d3748;
+    --theme-tertiary: #4a5568;
+}
+
+[data-theme="cyan"] {
+    --theme-primary: #38b2ac;
+    --theme-primary-dark: #2c7a7b;
+    --theme-secondary: #319795;
+    --theme-tertiary: #2c7a7b;
+}
+
+[data-theme="green"] {
+    --theme-primary: #48bb78;
+    --theme-primary-dark: #38a169;
+    --theme-secondary: #2f855a;
+    --theme-tertiary: #38a169;
+}
+
+[data-theme="red"] {
+    --theme-primary: #f56565;
+    --theme-primary-dark: #e53e3e;
+    --theme-secondary: #c53030;
+    --theme-tertiary: #c53030;
+}
+
+/* Light mode */
+:root,
+[data-mode="light"] {
+    --mode-bg-gradient-start: var(--theme-primary);
+    --mode-bg-gradient-end: var(--theme-secondary);
+    --mode-bg-white: #ffffff;
+    --mode-bg-light: #FAF6EC;        /* קרם חם, נעים יותר מאפור */
+    --mode-bg-lighter: #FBF8F1;
+    --mode-bg-lightest: #F5EFE0;
+    --mode-text-primary: #2D1F14;    /* חום עמוק, חמים יותר משחור */
+    --mode-text-secondary: #3D2C1D;
+    --mode-text-tertiary: #5C4632;
+    --mode-text-muted: #8B7355;
+    --mode-text-white: #ffffff;
+    --mode-border-light: #E8DCC6;
+    --mode-border-medium: #C9B596;
+
+    /* תיבות צבעוניות — Light mode */
+    --mode-box-info-bg: #FDF6E8;       /* קרם בז'-מתוק לידע ועובדות */
+    --mode-box-info-border: var(--theme-tertiary);  /* זית */
+    --mode-box-info-text: #3D2C1D;
+
+    --mode-box-warning-bg: #FCEEE3;    /* טרקוטה בהיר לאזהרה */
+    --mode-box-warning-border: #B65929;
+    --mode-box-warning-text: #6B2C0F;
+
+    --mode-box-success-bg: #EFF3DC;    /* זית-לימוני להצלחה/חיוב */
+    --mode-box-success-border: #6B7B3D;
+    --mode-box-success-text: #2E3A14;
+
+    /* תשובות נכון/לא נכון בחידון */
+    --mode-option-correct-bg: #DCE8C7;
+    --mode-option-correct-border: #6B7B3D;
+    --mode-option-correct-text: #2E3A14;
+    --mode-option-incorrect-bg: #F6D2BC;
+    --mode-option-incorrect-border: #B65929;
+    --mode-option-incorrect-text: #6B2C0F;
+
+    /* תרשימי זרימה */
+    --mode-step-success-bg: #DCE8C7;
+    --mode-step-success-border: #6B7B3D;
+    --mode-step-success-text: #2E3A14;
+    --mode-step-error-bg: #F6D2BC;
+    --mode-step-error-border: #B65929;
+    --mode-step-error-text: #6B2C0F;
+
+    --mode-source-border: #C99641;     /* זהב — להפניות מקור */
+    --mode-arrow-opacity: 0.6;
+}
+
+/* Dark mode */
+[data-mode="dark"] {
+    --mode-bg-gradient-start: #1F1610;
+    --mode-bg-gradient-end: #2A1F17;
+    --mode-bg-white: #2A1F17;
+    --mode-bg-light: #3D2C1D;
+    --mode-bg-lighter: #2A1F17;
+    --mode-bg-lightest: #1F1610;
+    --mode-text-primary: #FAF6EC;
+    --mode-text-secondary: #F0E6D2;
+    --mode-text-tertiary: #D8C8AC;
+    --mode-text-muted: #B89B7C;
+    --mode-text-white: #ffffff;
+    --mode-border-light: #5C4632;
+    --mode-border-medium: #8B7355;
+
+    --mode-box-info-bg: #2F2410;
+    --mode-box-info-border: #8B9B5D;
+    --mode-box-info-text: #D8E2B0;
+
+    --mode-box-warning-bg: #3D2418;
+    --mode-box-warning-border: #C67849;
+    --mode-box-warning-text: #F4C8A8;
+
+    --mode-box-success-bg: #2A3318;
+    --mode-box-success-border: #8B9B5D;
+    --mode-box-success-text: #D8E2B0;
+
+    --mode-option-correct-bg: #2A3318;
+    --mode-option-correct-border: #8B9B5D;
+    --mode-option-correct-text: #D8E2B0;
+    --mode-option-incorrect-bg: #3D2418;
+    --mode-option-incorrect-border: #C67849;
+    --mode-option-incorrect-text: #F4C8A8;
+
+    --mode-step-success-bg: #2A3318;
+    --mode-step-success-border: #8B9B5D;
+    --mode-step-success-text: #D8E2B0;
+    --mode-step-error-bg: #3D2418;
+    --mode-step-error-border: #C67849;
+    --mode-step-error-text: #F4C8A8;
+
+    --mode-source-border: #E0B86A;
+    --mode-arrow-opacity: 0.8;
+}
+
+/* ========================================
+   Final exposed variables
+   ======================================== */
+
+:root {
+    /* Theme colors */
+    --primary-color: var(--theme-primary);
+    --primary-dark: var(--theme-primary-dark);
+    --secondary-color: var(--theme-secondary);
+    --tertiary-color: var(--theme-tertiary, var(--theme-primary));
+
+    /* Backgrounds */
+    --bg-gradient-start: var(--mode-bg-gradient-start);
+    --bg-gradient-end: var(--mode-bg-gradient-end);
+    --bg-white: var(--mode-bg-white);
+    --bg-light-gray: var(--mode-bg-light);
+    --bg-lighter-gray: var(--mode-bg-lighter);
+    --bg-lightest-gray: var(--mode-bg-lightest);
+
+    /* Text */
+    --text-primary: var(--mode-text-primary);
+    --text-secondary: var(--mode-text-secondary);
+    --text-tertiary: var(--mode-text-tertiary);
+    --text-muted: var(--mode-text-muted);
+    --text-white: var(--mode-text-white);
+
+    /* Borders */
+    --border-light: var(--mode-border-light);
+    --border-medium: var(--mode-border-medium);
+
+    /* Boxes */
+    --box-info-bg: var(--mode-box-info-bg);
+    --box-info-border: var(--mode-box-info-border);
+    --box-warning-bg: var(--mode-box-warning-bg);
+    --box-warning-border: var(--mode-box-warning-border);
+    --box-success-bg: var(--mode-box-success-bg);
+    --box-success-border: var(--mode-box-success-border);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(58, 40, 24, 0.08);
+    --shadow-md: 0 4px 12px rgba(58, 40, 24, 0.15);
+    --shadow-lg: 0 6px 24px rgba(58, 40, 24, 0.12);
+    --shadow-primary: 0 2px 10px rgba(182, 89, 41, 0.25);
+    --shadow-primary-hover: 0 4px 15px rgba(182, 89, 41, 0.35);
+
+    /* Buttons */
+    --button-primary-bg: var(--primary-color);
+    --button-primary-hover: var(--primary-dark);
+    --button-disabled-bg: #C9B596;
+
+    /* Questions / quiz */
+    --question-bg: var(--bg-light-gray);
+    --question-border: var(--border-light);
+    --question-hover-border: var(--primary-color);
+    --option-bg: var(--bg-white);
+    --option-border: var(--border-medium);
+    --option-hover-bg: var(--bg-lightest-gray);
+    --option-hover-border: var(--primary-color);
+    --option-correct-bg: var(--mode-option-correct-bg);
+    --option-correct-border: var(--mode-option-correct-border);
+    --option-incorrect-bg: var(--mode-option-incorrect-bg);
+    --option-incorrect-border: var(--mode-option-incorrect-border);
+    --answer-box-bg: var(--box-info-bg);
+    --answer-box-border: var(--box-info-border);
+
+    /* Flowchart steps */
+    --step-question-bg: #FBF1D6;
+    --step-question-border: #D89B2F;
+    --step-question-text: #6B4A0F;
+    --step-success-bg: var(--mode-step-success-bg);
+    --step-success-border: var(--mode-step-success-border);
+    --step-success-text: var(--mode-step-success-text);
+    --step-retrospect-bg: #FBF1D6;
+    --step-retrospect-border: #D89B2F;
+    --step-retrospect-text: #6B4A0F;
+    --step-error-bg: var(--mode-step-error-bg);
+    --step-error-border: var(--mode-step-error-border);
+    --step-error-text: var(--mode-step-error-text);
+
+    /* Links */
+    --link-color: var(--theme-tertiary, var(--primary-color));
+    --link-hover-shadow: 0 2px 10px rgba(107, 123, 61, 0.3);
+
+    /* Categories — להבחנות צבעוניות */
+    --category-gradient-start: #6B7B3D;
+    --category-gradient-end: #4D5B26;
+    --category-error-start: #B65929;
+    --category-error-end: #8E4520;
+    --category-orange-start: #D89B2F;
+    --category-orange-end: #B17B1A;
+    --category-deep-red-start: #8E4520;
+    --category-deep-red-end: #6B2C0F;
+    --category-orange-alt-start: #D89B2F;
+    --category-orange-alt-end: #C99641;
+
+    /* Source border (זהב) */
+    --source-border: var(--mode-source-border);
+}
