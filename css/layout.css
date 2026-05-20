@@ -185,6 +185,11 @@ body {
     position: relative;
 }
 
+.slideshow-container:has(> .slide.title-slide.active) {
+    background: transparent;
+    box-shadow: none;
+}
+
 .slide {
     display: none;
     padding: 40px;

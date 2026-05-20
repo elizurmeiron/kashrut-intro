@@ -24,40 +24,44 @@
     --theme-tertiary: #6B7B3D;      /* זית — לדגשים, עומק */
 }
 
-/* Blue theme (Legacy) */
+/* Blue theme — כחול-אבן עמום, בגוון חם */
 [data-theme="blue"] {
-    --theme-primary: #667eea;
-    --theme-primary-dark: #5a6fd8;
-    --theme-secondary: #764ba2;
-    --theme-tertiary: #4299e1;
+    --theme-primary: #4E6572;
+    --theme-primary-dark: #3C5059;
+    --theme-secondary: #7892A0;
+    --theme-tertiary: #5C6E56;
 }
 
+/* Gray theme — אבן חמה ופarchment */
 [data-theme="gray"] {
-    --theme-primary: #718096;
-    --theme-primary-dark: #4a5568;
-    --theme-secondary: #2d3748;
-    --theme-tertiary: #4a5568;
+    --theme-primary: #6E655C;
+    --theme-primary-dark: #564F48;
+    --theme-secondary: #958D84;
+    --theme-tertiary: #5A5348;
 }
 
+/* Cyan theme — ים עדין ומרווה */
 [data-theme="cyan"] {
-    --theme-primary: #38b2ac;
-    --theme-primary-dark: #2c7a7b;
-    --theme-secondary: #319795;
-    --theme-tertiary: #2c7a7b;
+    --theme-primary: #4D756E;
+    --theme-primary-dark: #3B5C56;
+    --theme-secondary: #6E9990;
+    --theme-tertiary: #587048;
 }
 
+/* Green theme — זית ועשבים */
 [data-theme="green"] {
-    --theme-primary: #48bb78;
-    --theme-primary-dark: #38a169;
-    --theme-secondary: #2f855a;
-    --theme-tertiary: #38a169;
+    --theme-primary: #567040;
+    --theme-primary-dark: #435830;
+    --theme-secondary: #889858;
+    --theme-tertiary: #6B7B3D;
 }
 
+/* Red theme — לבנה ונחושת */
 [data-theme="red"] {
-    --theme-primary: #f56565;
-    --theme-primary-dark: #e53e3e;
-    --theme-secondary: #c53030;
-    --theme-tertiary: #c53030;
+    --theme-primary: #994939;
+    --theme-primary-dark: #78382C;
+    --theme-secondary: #BD7054;
+    --theme-tertiary: #7A6533;
 }
 
 /* Light mode */
@@ -83,30 +87,30 @@
     --mode-box-info-text: #3D2C1D;
 
     --mode-box-warning-bg: #FCEEE3;    /* טרקוטה בהיר לאזהרה */
-    --mode-box-warning-border: #B65929;
+    --mode-box-warning-border: var(--theme-primary);
     --mode-box-warning-text: #6B2C0F;
 
     --mode-box-success-bg: #EFF3DC;    /* זית-לימוני להצלחה/חיוב */
-    --mode-box-success-border: #6B7B3D;
+    --mode-box-success-border: var(--theme-tertiary);
     --mode-box-success-text: #2E3A14;
 
     /* תשובות נכון/לא נכון בחידון */
     --mode-option-correct-bg: #DCE8C7;
-    --mode-option-correct-border: #6B7B3D;
+    --mode-option-correct-border: var(--theme-tertiary);
     --mode-option-correct-text: #2E3A14;
     --mode-option-incorrect-bg: #F6D2BC;
-    --mode-option-incorrect-border: #B65929;
+    --mode-option-incorrect-border: var(--theme-primary);
     --mode-option-incorrect-text: #6B2C0F;
 
     /* תרשימי זרימה */
     --mode-step-success-bg: #DCE8C7;
-    --mode-step-success-border: #6B7B3D;
+    --mode-step-success-border: var(--theme-tertiary);
     --mode-step-success-text: #2E3A14;
     --mode-step-error-bg: #F6D2BC;
-    --mode-step-error-border: #B65929;
+    --mode-step-error-border: var(--theme-primary);
     --mode-step-error-text: #6B2C0F;
 
-    --mode-source-border: #C99641;     /* זהב — להפניות מקור */
+    --mode-source-border: var(--theme-secondary);
     --mode-arrow-opacity: 0.6;
 }
 
@@ -127,32 +131,32 @@
     --mode-border-medium: #8B7355;
 
     --mode-box-info-bg: #2F2410;
-    --mode-box-info-border: #8B9B5D;
+    --mode-box-info-border: var(--theme-tertiary);
     --mode-box-info-text: #D8E2B0;
 
     --mode-box-warning-bg: #3D2418;
-    --mode-box-warning-border: #C67849;
+    --mode-box-warning-border: var(--theme-secondary);
     --mode-box-warning-text: #F4C8A8;
 
     --mode-box-success-bg: #2A3318;
-    --mode-box-success-border: #8B9B5D;
+    --mode-box-success-border: var(--theme-tertiary);
     --mode-box-success-text: #D8E2B0;
 
     --mode-option-correct-bg: #2A3318;
-    --mode-option-correct-border: #8B9B5D;
+    --mode-option-correct-border: var(--theme-tertiary);
     --mode-option-correct-text: #D8E2B0;
     --mode-option-incorrect-bg: #3D2418;
-    --mode-option-incorrect-border: #C67849;
+    --mode-option-incorrect-border: var(--theme-secondary);
     --mode-option-incorrect-text: #F4C8A8;
 
     --mode-step-success-bg: #2A3318;
-    --mode-step-success-border: #8B9B5D;
+    --mode-step-success-border: var(--theme-tertiary);
     --mode-step-success-text: #D8E2B0;
     --mode-step-error-bg: #3D2418;
-    --mode-step-error-border: #C67849;
+    --mode-step-error-border: var(--theme-secondary);
     --mode-step-error-text: #F4C8A8;
 
-    --mode-source-border: #E0B86A;
+    --mode-source-border: var(--theme-secondary);
     --mode-arrow-opacity: 0.8;
 }
 
@@ -198,8 +202,8 @@
     --shadow-sm: 0 2px 8px rgba(58, 40, 24, 0.08);
     --shadow-md: 0 4px 12px rgba(58, 40, 24, 0.15);
     --shadow-lg: 0 6px 24px rgba(58, 40, 24, 0.12);
-    --shadow-primary: 0 2px 10px rgba(182, 89, 41, 0.25);
-    --shadow-primary-hover: 0 4px 15px rgba(182, 89, 41, 0.35);
+    --shadow-primary: 0 2px 10px color-mix(in srgb, var(--theme-primary) 25%, transparent);
+    --shadow-primary-hover: 0 4px 15px color-mix(in srgb, var(--theme-primary) 35%, transparent);
 
     /* Buttons */
     --button-primary-bg: var(--primary-color);
@@ -223,13 +227,13 @@
 
     /* Flowchart steps */
     --step-question-bg: #FBF1D6;
-    --step-question-border: #D89B2F;
+    --step-question-border: var(--theme-secondary);
     --step-question-text: #6B4A0F;
     --step-success-bg: var(--mode-step-success-bg);
     --step-success-border: var(--mode-step-success-border);
     --step-success-text: var(--mode-step-success-text);
     --step-retrospect-bg: #FBF1D6;
-    --step-retrospect-border: #D89B2F;
+    --step-retrospect-border: var(--theme-secondary);
     --step-retrospect-text: #6B4A0F;
     --step-error-bg: var(--mode-step-error-bg);
     --step-error-border: var(--mode-step-error-border);
@@ -237,19 +241,19 @@
 
     /* Links */
     --link-color: var(--theme-tertiary, var(--primary-color));
-    --link-hover-shadow: 0 2px 10px rgba(107, 123, 61, 0.3);
+    --link-hover-shadow: 0 2px 10px color-mix(in srgb, var(--theme-tertiary) 30%, transparent);
 
     /* Categories — להבחנות צבעוניות */
-    --category-gradient-start: #6B7B3D;
-    --category-gradient-end: #4D5B26;
-    --category-error-start: #B65929;
-    --category-error-end: #8E4520;
-    --category-orange-start: #D89B2F;
-    --category-orange-end: #B17B1A;
-    --category-deep-red-start: #8E4520;
-    --category-deep-red-end: #6B2C0F;
-    --category-orange-alt-start: #D89B2F;
-    --category-orange-alt-end: #C99641;
+    --category-gradient-start: var(--theme-tertiary);
+    --category-gradient-end: var(--theme-primary-dark);
+    --category-error-start: var(--theme-primary);
+    --category-error-end: var(--theme-primary-dark);
+    --category-orange-start: var(--theme-secondary);
+    --category-orange-end: var(--theme-primary-dark);
+    --category-deep-red-start: var(--theme-primary-dark);
+    --category-deep-red-end: var(--theme-primary);
+    --category-orange-alt-start: var(--theme-secondary);
+    --category-orange-alt-end: var(--theme-secondary);
 
     /* Source border (זהב) */
     --source-border: var(--mode-source-border);

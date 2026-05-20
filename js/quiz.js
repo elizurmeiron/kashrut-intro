@@ -6,80 +6,138 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // התוכן עניינים נמצא בשקופית 2 (אינדקס 1)
     const tocSlide = document.querySelectorAll('.slide')[1];
     if (!tocSlide) return;
 
-    // החלפת "(שקף N)" בקישור לחיץ
     let html = tocSlide.innerHTML;
     html = html.replace(/\(שקף (\d+)\)/g, (match, slideNum) =>
         `<span class="slide-link-span" data-slide="${slideNum}">${match}</span>`
     );
     tocSlide.innerHTML = html;
 
-    // חיווט לחיצות
     tocSlide.querySelectorAll('.slide-link-span').forEach(link => {
-        const slideNum = parseInt(link.getAttribute('data-slide'), 10);
         link.addEventListener('click', (e) => {
             e.stopPropagation();
-            goToSlide(slideNum);
+            goToSlide(parseInt(link.getAttribute('data-slide'), 10));
         });
     });
+
+    initQuiz();
 });
 
 /* ============================================================
-   חידון - הצגת תשובות וסימון נכון/שגוי
+   חידון — בחירת תשובה, סימון נכון/שגוי, והצגת/הסתרת הסבר
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+function getCorrectLetter(answerBox) {
+    const strong = answerBox.querySelector('strong');
+    const text = strong ? strong.textContent : answerBox.textContent;
+    const match = text.match(/תשובה\s*נכונה\s*:\s*([א-ד])/);
+    return match ? match[1] : '';
+}
+
+function getOptionLetter(option) {
+    const letterEl = option.querySelector('.option-letter');
+    return letterEl ? letterEl.textContent.trim() : '';
+}
+
+function markCorrectOption(options, correctLetter) {
+    options.forEach(opt => {
+        if (getOptionLetter(opt) === correctLetter) {
+            opt.classList.add('correct');
+        }
+    });
+}
+
+function clearOptionMarks(options) {
+    options.forEach(opt => {
+        opt.classList.remove('correct', 'incorrect', 'wrong');
+    });
+}
+
+function revealCorrectAnswer(question) {
+    const answerBox = question.querySelector('.answer-box');
+    const options = question.querySelectorAll('.option');
+    if (!answerBox || !options.length) return;
+
+    const correctLetter = getCorrectLetter(answerBox);
+    if (!correctLetter) return;
+
+    markCorrectOption(options, correctLetter);
+}
+
+function toggleAnswer(btn, event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    const question = btn.closest('.question');
+    if (!question) return;
+
+    const answerBox = question.querySelector('.answer-box');
+    if (!answerBox) return;
+
+    const isVisible = answerBox.classList.toggle('show');
+    btn.textContent = isVisible ? 'הסתר תשובה' : 'הצג תשובה';
+    btn.setAttribute('aria-expanded', String(isVisible));
+
+    if (isVisible) {
+        revealCorrectAnswer(question);
+    } else {
+        const options = question.querySelectorAll('.option');
+        clearOptionMarks(options);
+        question.classList.remove('answered');
+    }
+}
+
+function handleOptionClick(question, option) {
+    if (question.classList.contains('answered')) return;
+
+    const answerBox = question.querySelector('.answer-box');
+    const options = question.querySelectorAll('.option');
+    if (!answerBox || !options.length) return;
+
+    const correctLetter = getCorrectLetter(answerBox);
+    const selectedLetter = getOptionLetter(option);
+    if (!correctLetter || !selectedLetter) return;
+
+    question.classList.add('answered');
+
+    clearOptionMarks(options);
+
+    if (selectedLetter === correctLetter) {
+        option.classList.add('correct');
+    } else {
+        option.classList.add('incorrect');
+        markCorrectOption(options, correctLetter);
+    }
+}
+
+function initQuiz() {
     document.querySelectorAll('.question').forEach(question => {
-        const answerBox = question.querySelector('.answer-box');
         const options = question.querySelectorAll('.option');
         const showAnswerBtn = question.querySelector('.show-answer-btn');
 
-        if (!answerBox || !options.length) return;
+        if (showAnswerBtn) {
+            showAnswerBtn.setAttribute('aria-expanded', 'false');
+        }
 
-        // חילוץ האות הנכונה (א/ב/ג/ד) מקופסת התשובה
-        const correctMatch = answerBox.textContent.match(/[א-ד]/);
-        const correctLetter = correctMatch ? correctMatch[0] : '';
-
-        // לחיצה על אופציה
         options.forEach(option => {
-            option.addEventListener('click', () => {
-                // אם כבר נבחרה תשובה, לא מאפשר שינוי
-                if (question.classList.contains('answered')) return;
+            option.setAttribute('role', 'button');
+            option.setAttribute('tabindex', '0');
 
-                const letter = option.dataset.letter || option.textContent.charAt(0);
-                question.classList.add('answered');
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                handleOptionClick(question, option);
+            });
 
-                if (letter === correctLetter) {
-                    option.classList.add('correct');
-                } else {
-                    option.classList.add('incorrect');
-                    // סימון התשובה הנכונה
-                    options.forEach(opt => {
-                        const optLetter = opt.dataset.letter || opt.textContent.charAt(0);
-                        if (optLetter === correctLetter) {
-                            opt.classList.add('correct');
-                        }
-                    });
+            option.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleOptionClick(question, option);
                 }
-
-                // הצגת קופסת ההסבר
-                if (answerBox) answerBox.classList.add('visible');
             });
         });
-
-        // כפתור "הצג תשובה" (אם קיים)
-        if (showAnswerBtn) {
-            showAnswerBtn.addEventListener('click', () => {
-                question.classList.add('answered');
-                options.forEach(opt => {
-                    const optLetter = opt.dataset.letter || opt.textContent.charAt(0);
-                    if (optLetter === correctLetter) opt.classList.add('correct');
-                });
-                if (answerBox) answerBox.classList.add('visible');
-            });
-        }
     });
-});
+}
